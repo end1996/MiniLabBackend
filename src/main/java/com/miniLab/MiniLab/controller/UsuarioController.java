@@ -1,9 +1,10 @@
 package com.miniLab.MiniLab.controller;
 
+import com.miniLab.MiniLab.DTO.UsuarioDTO;
+import com.miniLab.MiniLab.mapper.UsuarioMapper;
 import com.miniLab.MiniLab.model.Usuario;
 import com.miniLab.MiniLab.service.UsuarioService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,35 +22,28 @@ public class UsuarioController {
 
     // Listar todos los usuarios
     @GetMapping("usuarios")
-    public List<Usuario> getUsuarios() {
+    public List<UsuarioDTO> listarUsuarios() {
         return usuarioService.listarTodos();
     }
 
     // Crear un nuevo usuario
     @PostMapping("usuarios")
-    public Usuario guardarUsuario(@RequestBody Usuario usuario) {
-        usuario.setId(null); // Asegurarse de que es nuevo
-        return usuarioService.guardar(usuario);
+    public ResponseEntity<UsuarioDTO> crearUsuario(@RequestBody UsuarioDTO usuarioDTO) {
+        UsuarioDTO creado = usuarioService.guardar(usuarioDTO);
+        return ResponseEntity.ok(creado);
     }
 
-    @PutMapping
-    // Actualizar usuario existente
-    public ResponseEntity<Usuario> actualizarUsuario(@PathVariable Long id, @RequestBody Usuario usuario) {
-        Optional<Usuario> usuarioExistente = usuarioService.buscarPorId(id);
-
-        if (usuarioExistente.isPresent()) {
-            usuario.setId(id); // Actualizar id mapeado
-            Usuario actualizado = usuarioService.guardar(usuario);
-            return ResponseEntity.ok(actualizado);
-        } else {
-            return ResponseEntity.notFound().build(); // HTTP 404
-        }
+    @PutMapping("usuarios/{id}")
+    public ResponseEntity<UsuarioDTO> actualizarUsuario(@PathVariable Long id, @RequestBody UsuarioDTO usuarioDTO) {
+        return usuarioService.actualizar(id, usuarioDTO)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     // Eliminar usuario por ID
-    @DeleteMapping("/{id}")
-    public String deleteUsuario(@PathVariable Long id) {
-        this.usuarioService.eliminar(id);
-        return "El registro ID: " + id + "se eliminó correctamenre";
+    @DeleteMapping("usuarios/{id}")
+    public ResponseEntity<String> eliminarUsuario(@PathVariable Long id) {
+        usuarioService.eliminar(id);
+        return ResponseEntity.ok("El registro ID: " + id + " se eliminó correctamente");
     }
 }

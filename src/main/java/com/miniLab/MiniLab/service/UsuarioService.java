@@ -1,13 +1,15 @@
 package com.miniLab.MiniLab.service;
 
+import com.miniLab.MiniLab.DTO.UsuarioDTO;
 import com.miniLab.MiniLab.model.Usuario;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface UsuarioService {
-    Usuario guardar(Usuario usuario);
-    List<Usuario> listarTodos();
-    Optional<Usuario> buscarPorId(Long id);
+    UsuarioDTO guardar(UsuarioDTO usuarioDTO);
+    List<UsuarioDTO> listarTodos();
+    Optional<UsuarioDTO> buscarPorId(Long id);
+    Optional<UsuarioDTO> actualizar(Long id, UsuarioDTO dto);
     void eliminar(Long id);
 }
