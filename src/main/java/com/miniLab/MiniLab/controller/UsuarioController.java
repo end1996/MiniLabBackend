@@ -1,14 +1,11 @@
 package com.miniLab.MiniLab.controller;
 
 import com.miniLab.MiniLab.DTO.UsuarioDTO;
-import com.miniLab.MiniLab.mapper.UsuarioMapper;
-import com.miniLab.MiniLab.model.Usuario;
 import com.miniLab.MiniLab.service.UsuarioService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("api")

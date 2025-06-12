@@ -1,7 +1,6 @@
 package com.miniLab.MiniLab.service;
 
 import com.miniLab.MiniLab.DTO.UsuarioDTO;
-import com.miniLab.MiniLab.model.Usuario;
 
 import java.util.List;
 import java.util.Optional;

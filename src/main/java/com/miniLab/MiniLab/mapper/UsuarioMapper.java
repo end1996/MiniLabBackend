@@ -1,6 +1,7 @@
 package com.miniLab.MiniLab.mapper;
 
 import com.miniLab.MiniLab.DTO.UsuarioDTO;
+import com.miniLab.MiniLab.model.Empleado;
 import com.miniLab.MiniLab.model.Usuario;
 
 public class UsuarioMapper {
@@ -21,6 +22,11 @@ public class UsuarioMapper {
         usuario.setRol(dto.getRol());
         usuario.setUsuario(dto.getUsuario());
         usuario.setClave(dto.getClave());
+        if (dto.getEmpleadoId() != null) {
+            Empleado empleado = new Empleado();
+            empleado.setId(dto.getEmpleadoId());
+            usuario.setEmpleado(empleado);
+        }
         return usuario;
     }
 }

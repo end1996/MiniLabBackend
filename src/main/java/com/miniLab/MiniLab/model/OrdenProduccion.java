@@ -8,6 +8,7 @@ import java.sql.Date;
 
 @Data
 @Entity
+@Table (name="Orden_produccion")
 @NoArgsConstructor
 public class OrdenProduccion {
 
@@ -20,6 +21,6 @@ public class OrdenProduccion {
     private String observaciones;
 
     @ManyToOne
-    @JoinColumn(name = "id_empleado", referencedColumnName = "id")
+    @JoinColumn(name = "empleado_id", referencedColumnName = "id")
     private Empleado empleado;
 }
