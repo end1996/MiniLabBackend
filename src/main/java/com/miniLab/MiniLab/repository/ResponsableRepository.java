@@ -1,10 +1,11 @@
 package com.miniLab.MiniLab.repository;
 
-import com.miniLab.MiniLab.model.Empleado;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.miniLab.MiniLab.model.Responsable;
+
 @Repository
-public interface EmpleadoRepository extends JpaRepository<Empleado, Long> {
+public interface ResponsableRepository extends JpaRepository<Responsable, Long> {
 
 }
