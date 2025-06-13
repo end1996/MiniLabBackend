@@ -1,19 +1,13 @@
-package com.miniLab.MiniLab.model;
+package com.miniLab.MiniLab.DTO;
 
-import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 
 @Data
-@Entity
-@Table (name="Empleado")
-@NoArgsConstructor
-public class Empleado {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@AllArgsConstructor
+public class EmpleadoDTO {
 
     private Long id;
     private String nombre;

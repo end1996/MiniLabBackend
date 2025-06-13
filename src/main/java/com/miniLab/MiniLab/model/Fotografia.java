@@ -4,21 +4,20 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
+
 @Data
 @Entity
-@Table (name="Usuario")
 @NoArgsConstructor
-public class Usuario {
+@Table(name = "fotografia")
+public class Fotografia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
-    private String rol;
-    private String usuario;
-    private String clave;
+    private Date fecha;
 
-    @OneToOne
-    @JoinColumn(name= "empleado_id", referencedColumnName = "id")
-    private Empleado empleado;
+    @ManyToOne
+    @JoinColumn(name="tipo_fotografia_id", referencedColumnName = "id")
+    private TipoFotografia tipo_fotografia_id;
 }

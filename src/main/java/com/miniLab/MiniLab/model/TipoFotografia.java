@@ -6,19 +6,12 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table (name="Usuario")
+@Table(name="tipo_fotografia")
 @NoArgsConstructor
-public class Usuario {
+public class TipoFotografia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
-    private String rol;
-    private String usuario;
-    private String clave;
-
-    @OneToOne
-    @JoinColumn(name= "empleado_id", referencedColumnName = "id")
-    private Empleado empleado;
+    private String modalidad;
 }
